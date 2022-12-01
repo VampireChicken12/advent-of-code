@@ -1,0 +1,19 @@
+{
+	"name": "advent-of-code",
+	"version": "1.0.0",
+	"description": "",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VampireChicken12/advent-of-code.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"fs": "^0.0.1-security",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"@types/node": "^18.11.10"
+	}
+}
