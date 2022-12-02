@@ -1,15 +1,16 @@
 import { join } from "path";
 import { readFile } from "fs/promises";
-
+type playerOneRPS = "A" | "B" | "C";
+type playerTwoRPS = "X" | "Y" | "Z";
 (async () => {
-	const input = await readFile(join(__dirname + "/2", "input.txt"), "utf-8");
+	const input = await readFile(join(__dirname, "input.txt"), "utf-8");
 	const games = input.split("\n");
 
 	const playerOneValues = ["A", "B", "C"];
 	console.log(games);
 	const gamesPlayerInputs = games.map((game) => game.split(" "));
 	console.log(gamesPlayerInputs.length);
-	const gameScores = gamesPlayerInputs.map(([playerOne, playerTwo]) => {
+	const gameScores = gamesPlayerInputs.map(([playerOne, playerTwo]: [playerOneRPS, playerTwoRPS]) => {
 		let roundScore = 0;
 		if (playerTwo === "X") roundScore += 0;
 		if (playerTwo === "Y") roundScore += 3;
