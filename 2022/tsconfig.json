@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "es2020",
+		"allowJs": false,
+		"downlevelIteration": true,
+		"declaration": true,
+		"strict": false,
+		"forceConsistentCasingInFileNames": true,
+		"noErrorTruncation": true,
+		"noUncheckedIndexedAccess": true,
+		"esModuleInterop": true,
+		"module": "commonjs",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"incremental": true,
+		"sourceMap": true
+	}
+}
