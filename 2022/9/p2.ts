@@ -1,9 +1,4 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
-
-(async function () {
-	// const input = await readFile(join(__dirname, "input_test.txt"), "utf-8")
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const lines = input.split("\n");
 	let rope = [
 		{ x: 0, y: 0 },
@@ -57,4 +52,4 @@ import { join } from "path";
 	}
 
 	console.log(allPos.size);
-})();
+};

@@ -1,9 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async function () {
-	const input = await readFile(join(__dirname, "input_test.txt"), "utf-8");
-	// const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const grid = input.split("\n").map((r) => r.split(""));
 
 	console.log(grid);
@@ -94,4 +89,4 @@ import { readFile } from "fs/promises";
 
 		Paths = newPaths;
 	}
-})();
+};

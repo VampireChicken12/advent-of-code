@@ -1,9 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async function () {
-	// const input = await readFile(join(__dirname, "input_test.txt"), "utf-8");
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	function parseGrid(input: string): number[][] {
 		return input
 			.split("\n") // split the input string into an array of strings
@@ -67,4 +62,4 @@ import { readFile } from "fs/promises";
 	}
 
 	console.log(countVisibleTrees(grid));
-})();
+};

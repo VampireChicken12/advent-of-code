@@ -1,8 +1,5 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async () => {
-	const elfCalorieLog = await readFile(join(__dirname, "input.txt"), "utf8");
+export default async (input: string) => {
+	const elfCalorieLog = input;
 	const elfCalorieLogSplit = elfCalorieLog.split("\n\n");
 
 	const elfGroups = elfCalorieLogSplit.map((e) => e.split("\n"));
@@ -13,4 +10,4 @@ import { readFile } from "fs/promises";
 	console.log(elfGroupTotals);
 	const highestCalorieElf = elfGroupTotals[0];
 	console.log(highestCalorieElf);
-})();
+};

@@ -1,9 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async function () {
-	// const input = await readFile(join(__dirname, "input_test.txt"), "utf-8");
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const lines = input.split("\n");
 	const instructions = [];
 	let xReg = 1;
@@ -27,4 +22,4 @@ import { readFile } from "fs/promises";
 
 	console.log(totals);
 	console.log(sum);
-})();
+};

@@ -1,8 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async function () {
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const [rawInputStacksOfCrates, rawMoveInstructions] = input.split("\n\n");
 	// console.log(rawInputStacksOfCrates);
 	// console.log(rawMoveInstructions);
@@ -55,4 +51,4 @@ import { readFile } from "fs/promises";
 	});
 	printStacks();
 	console.log(stackOfCrates.map((stack) => stack[stack.length - 1].replace(/[\[(.*)\]]/g, "")).join(""));
-})();
+};

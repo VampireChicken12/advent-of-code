@@ -1,8 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async function () {
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	for (let i = 3; i < input.length; i += 1) {
 		let cache = {};
 		const section = input.slice(i, i + 4);
@@ -19,4 +15,4 @@ import { readFile } from "fs/promises";
 			break;
 		}
 	}
-})();
+};

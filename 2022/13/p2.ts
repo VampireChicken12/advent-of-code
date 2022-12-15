@@ -1,9 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async () => {
-	// const input = await readFile(join(__dirname, "input_test.txt"), "utf-8");
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const groups = input.split("\n\n");
 
 	type Base = number | number[];
@@ -66,4 +61,4 @@ import { readFile } from "fs/promises";
 		}
 	});
 	console.log(first * second);
-})();
+};

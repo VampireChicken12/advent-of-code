@@ -1,15 +1,10 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
-
 type Dir = {
 	parent?: Dir;
 	files: { [name: string]: number };
 	dirs: { [name: string]: Dir };
 };
 
-(async function () {
-	// const input = await readFile(join(__dirname, "input_test.txt"), "utf-8");
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const dirSizes: number[] = [];
 	const computeFileSize = (curr: Dir): number => {
 		let size = 0;
@@ -74,4 +69,4 @@ type Dir = {
 		console.log("Total size:", totalSize);
 	};
 	parseInput(input);
-})();
+};

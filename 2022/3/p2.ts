@@ -1,5 +1,3 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
 const itemRearrangementPriority = {
 	a: 1,
 	b: 2,
@@ -54,8 +52,7 @@ const itemRearrangementPriority = {
 	Y: 51,
 	Z: 52
 } as const;
-(async () => {
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const ruckSackLines = input.split("\n").filter(Boolean);
 	const elfRuckSackGroups: string[][] = [];
 	for (let i = 0, pos = 0; i < ruckSackLines.length; i += 3) {
@@ -80,4 +77,4 @@ const itemRearrangementPriority = {
 		.map((item) => itemRearrangementPriority[item])
 		.reduce((a, b) => a + b);
 	console.log("Sum of shared items:  ", sharedItemsPrioritySum);
-})();
+};

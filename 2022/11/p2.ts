@@ -1,9 +1,4 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
-
-(async function () {
-	// const input = await readFile(join(__dirname, "input_test.txt"), "utf-8");
-	const input = await readFile(join(__dirname, "input_prod.txt"), "utf-8");
+export default async (input: string) => {
 	const split = input.split("\n\n");
 	const monkeys = split.map((i) => {
 		const [monkey, startingItems, operation, test, t, f] = i.split("\n").map((l) => l.trim());
@@ -49,4 +44,4 @@ import { readFile } from "fs/promises";
 	console.log(monkeyCounts);
 	const sortedMonkeys = monkeyCounts.sort((a, b) => b - a);
 	console.log(sortedMonkeys[0] * sortedMonkeys[1]);
-})();
+};

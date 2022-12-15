@@ -1,9 +1,6 @@
-import { join } from "path";
-import { readFile } from "fs/promises";
 type playerOneRPS = "A" | "B" | "C";
 type playerTwoRPS = "X" | "Y" | "Z";
-(async () => {
-	const input = await readFile(join(__dirname, "input.txt"), "utf-8");
+export default async (input: string) => {
 	const games = input.split("\n");
 
 	console.log(games);
@@ -28,4 +25,4 @@ type playerTwoRPS = "X" | "Y" | "Z";
 	console.log(gameScores.length);
 	const totalScore = gameScores.reduce((acc, score) => acc + score, 0);
 	console.log("Total score:", totalScore);
-})();
+};
