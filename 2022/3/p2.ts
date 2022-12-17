@@ -1,3 +1,4 @@
+import parseLines from "../../utils/parseLines";
 const itemRearrangementPriority = {
 	a: 1,
 	b: 2,
@@ -53,7 +54,7 @@ const itemRearrangementPriority = {
 	Z: 52
 } as const;
 export default async (input: string) => {
-	const ruckSackLines = input.split("\n").filter(Boolean);
+	const ruckSackLines = parseLines(input).filter(Boolean);
 	const elfRuckSackGroups: string[][] = [];
 	for (let i = 0, pos = 0; i < ruckSackLines.length; i += 3) {
 		if (!elfRuckSackGroups[pos]) {

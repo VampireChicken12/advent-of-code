@@ -1,7 +1,8 @@
+import parseLines from "../../utils/parseLines";
 const parseSectionRanges = (input: string[]): [[number, number], [number, number]][] =>
 	input.map((line) => line.split(",").map((part) => part.split("-").map(Number) as [number, number]) as [[number, number], [number, number]]);
 export default async (input: string) => {
-	const assignments = input.split("\n");
+	const assignments = parseLines(input);
 	console.log(assignments.map((assignment) => assignment.split(",")));
 	const assignmentGroups = parseSectionRanges(assignments);
 

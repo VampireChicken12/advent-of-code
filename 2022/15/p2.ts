@@ -1,3 +1,4 @@
+import parseLines from "../../utils/parseLines";
 export default async (input: string) => {
 	type Coord = [number, number];
 	type Range = [number, number];
@@ -56,7 +57,7 @@ export default async (input: string) => {
 			updateRanges(map, y, [startRange, endRange]);
 		}
 	}
-	const lines = input.split("\n");
+	const lines = parseLines(input);
 	const map: Record<number, Range[]> = {};
 	const max = 4000000;
 	for (const line of lines) {

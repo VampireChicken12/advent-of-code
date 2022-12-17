@@ -1,5 +1,7 @@
+import parseLines from "../../utils/parseLines";
+
 export default async (input: string) => {
-	const lines = input.split("\n");
+	const lines = parseLines(input);
 	const instructions = [];
 	let xReg = 1;
 	for (let i = 0; i < lines.length; i++) {

@@ -1,3 +1,4 @@
+import parseLines from "../../utils/parseLines";
 const itemRearrangementPriority = {
 	a: 1,
 	b: 2,
@@ -53,7 +54,7 @@ const itemRearrangementPriority = {
 	Z: 52
 } as const;
 export default async (input: string) => {
-	const rucksacks = input.split("\n").filter((rucksack) => rucksack !== "");
+	const rucksacks = parseLines(input).filter((rucksack) => rucksack !== "");
 	console.log(rucksacks);
 	const splitRuckSacks = rucksacks.map((rucksack) => {
 		return [rucksack.slice(0, rucksack.length / 2), rucksack.replace(rucksack.slice(0, rucksack.length / 2), "")];

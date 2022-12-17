@@ -1,7 +1,8 @@
+import parseLines from "../../utils/parseLines";
 type playerOneRPS = "A" | "B" | "C";
 type playerTwoRPS = "X" | "Y" | "Z";
 export default async (input: string) => {
-	const games = input.split("\n");
+	const games = parseLines(input);
 
 	console.log(games);
 	const gamesPlayerInputs = games.map((game) => game.split(" "));

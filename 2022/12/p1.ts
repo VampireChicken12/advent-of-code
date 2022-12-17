@@ -1,5 +1,6 @@
+import parseLines from "../../utils/parseLines";
 export default async (input: string) => {
-	const grid = input.split("\n").map((r) => r.split(""));
+	const grid = parseLines(input).map((r) => r.split(""));
 
 	console.log(grid);
 	type Point = { x: number; y: number };

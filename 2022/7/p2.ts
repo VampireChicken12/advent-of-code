@@ -1,3 +1,4 @@
+import parseLines from "../../utils/parseLines";
 type Dir = {
 	parent?: Dir;
 	files: { [name: string]: number };
@@ -24,7 +25,7 @@ export default async (input: string) => {
 	};
 	const parseInput = (input: string) => {
 		// Split input into lines
-		const lines = input.split("\n");
+		const lines = parseLines(input);
 
 		// Initialize variables to keep track of current directory, list of files and their sizes, and directories
 		const fileMap: Dir = { files: {}, dirs: {} };

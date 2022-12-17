@@ -49,8 +49,10 @@ config();
 	const p1FileContents = p1FileExists ? readFileSync(p1File).toString().length : 0;
 	const p2FileContents = p2FileExists ? readFileSync(p2File).toString().length : 0;
 	// Write the default async function to the p1.ts and p2.ts files
-	const asyncFn = `export default async (input: string) => {
-
+	const asyncFn = `import parseLines from "../../utils/parseLines";
+	export default async (input: string) => {
+		const lines = parseLines(input)
+		console.log(lines)
 }
 `;
 	// Only write the p1.ts and p2.ts files if they don't exist or exist but are empty

@@ -1,5 +1,6 @@
+import parseLines from "../../utils/parseLines";
 export default async (input: string) => {
-	const lines = input.split("\n");
+	const lines = parseLines(input);
 	let rope = [
 		{ x: 0, y: 0 },
 		{ x: 0, y: 0 },
