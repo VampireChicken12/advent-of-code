@@ -30,8 +30,9 @@ config();
 	// Get the current year and day from the inquirer prompt or use the current system date
 	const { day, year, downloadDay } = await inquirer.prompt(questions);
 	// Create the Advent of Code directory for the current year if it doesn't exist
-	if (!existsSync(year)) {
-		mkdirSync(year);
+	const yearDirectory = join("..", year);
+	if (!existsSync(yearDirectory)) {
+		mkdirSync(yearDirectory);
 	}
 
 	// Create the Advent of Code day directory for the current day
