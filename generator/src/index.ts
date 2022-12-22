@@ -5,30 +5,16 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import inquirer from "inquirer";
 import { join } from "path";
 
+import { Command, Option } from "commander";
+const program = new Command();
+// Use Commander to parse the year, day, part and input parameters
+program
+	.addOption(new Option("-y, --year <year>", "What year do you want to generate?").default(new Date().getFullYear().toString(), "current year"))
+	.addOption(new Option("-d, --day <day>", "What day do you want to generate?").default(new Date().getDate().toString(), "current day"))
+	.addOption(new Option("-dl, --download <part>", "Do you want to download the input for this day?").choices(["yes", "no"]))
+	.parse();
 config();
-(async () => {
-	const questions = [
-		{
-			type: "text",
-			name: "year",
-			message: "What year do you want to generate?",
-			default: new Date().getFullYear().toString()
-		},
-		{
-			type: "text",
-			name: "day",
-			message: "What day do you want to generate?",
-			default: new Date().getDate().toString()
-		},
-		{
-			type: "confirm",
-			name: "downloadDay",
-			message: "Do you want to download the input for this day?",
-			default: false
-		}
-	];
-	// Get the current year and day from the inquirer prompt or use the current system date
-	const { day, year, downloadDay } = await inquirer.prompt(questions);
+async function generate(day: string, year: string, download: boolean) {
 	// Create the Advent of Code directory for the current year if it doesn't exist
 	const yearDirectory = join("..", year);
 	if (!existsSync(yearDirectory)) {
@@ -61,7 +47,7 @@ export default async (input: string) => {
 	// Create the input_test.txt and input_prod.txt files
 	const inputTestFile = join(dayDir, "input_test.txt");
 	const inputProdFile = join(dayDir, "input_prod.txt");
-	if (downloadDay) {
+	if (download) {
 		const cookie = process.env.ADVENT_OF_CODE_SESSION;
 
 		const url = `https://adventofcode.com/${year}/day/${day}`;
@@ -101,5 +87,35 @@ export default async (input: string) => {
 	} else {
 		writeFileSync(inputTestFile, "");
 		writeFileSync(inputProdFile, "");
+	}
+}
+(async () => {
+	const { day: CLI_day, download: CLI_download, year: CLI_year } = program.opts();
+	if (CLI_day && CLI_year && CLI_download) {
+		generate(CLI_day, CLI_year, CLI_download === "yes" ? true : false);
+	} else {
+		const questions = [
+			{
+				type: "text",
+				name: "year",
+				message: "What year do you want to generate?",
+				default: new Date().getFullYear().toString()
+			},
+			{
+				type: "text",
+				name: "day",
+				message: "What day do you want to generate?",
+				default: new Date().getDate().toString()
+			},
+			{
+				type: "confirm",
+				name: "download",
+				message: "Do you want to download the input for this day?",
+				default: false
+			}
+		];
+		// Get the current year and day from the inquirer prompt or use the current system date
+		const { day, year, download } = await inquirer.prompt(questions);
+		generate(day, year, download);
 	}
 })();
