@@ -50,7 +50,7 @@ config();
 	const p2FileContents = p2FileExists ? readFileSync(p2File).toString().length : 0;
 	// Write the default async function to the p1.ts and p2.ts files
 	const asyncFn = `import parseLines from "../../utils/parseLines";
-	export default async (input: string) => {
+export default async (input: string) => {
 		const lines = parseLines(input)
 		console.log(lines)
 }
@@ -71,7 +71,7 @@ config();
 			.then((response) => {
 				const dayPage = response.data as string;
 				const $ = load(dayPage);
-				const input = $("code").contents().first().text();
+				const input = $("pre > code").contents().first().text();
 				if (input) {
 					writeFileSync(inputTestFile, input);
 				}
