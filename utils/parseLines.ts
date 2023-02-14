@@ -1,3 +1,3 @@
-export default function parseLines(input: string): string[] {
-	return input.split("\n").map((line) => line.trim());
+export default function parseLines(input: string, doubleNewline?: boolean): string[] {
+	return input.split(doubleNewline ? "\n\n" : "\n").map((line) => line.trim());
 }

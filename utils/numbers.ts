@@ -7,3 +7,5 @@ export function inclusiveRange(num1: number, num2: number): number[] {
 }
 
 export const rangesOverlap = ([[l1, h1], [l2, h2]]: number[][]): boolean => !(l1 > h2 || l2 > h1);
+
+export const positiveMod = (n: number, m: number): number => ((n % m) + m) % m;
